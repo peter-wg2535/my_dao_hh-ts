@@ -1,0 +1,40 @@
+#install hardhat
+https://hardhat.org/tutorial/creating-a-new-hardhat-project
+select advacne javascript template and install addtioan al package
+
+
+
+#https://www.npmjs.com/package/@openzeppelin/contracts
+
+#install hadrhat deploy (Hard hat deploy)
+
+https://github.com/wighawag/hardhat-deploy/tree/master
+npm install -D hardhat-deploy
+and
+npm install --save-dev  @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+
+for  type script
+
+TypeScript support
+With hardhat the tsconfig.json is optional.
+
+But if you add folders to the include field in tsconfig.json, you ll also need to include hardhat.config.ts like :
+
+  "include": ["./scripts", "./test", "./deploy", "./deploy-helpers"],
+  "files": ["./hardhat.config.ts", "./helper-hardhat-config.ts"]
+
+
+for deploy script (see below) you can write them this way to benefit from typing :
+
+import {HardhatRuntimeEnvironment} from 'hardhat/types';
+import {DeployFunction} from 'hardhat-deploy/types';
+
+const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+  // code here
+};
+export default func;
+
+
+
+
+
