@@ -1,16 +1,12 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types"
 import { DeployFunction } from "hardhat-deploy/types"
 // import verify from "../helper-functions"
-import {
-  // networkConfig,
-  // developmentChains,
-  QUORUM_PERCENTAGE,
-  VOTING_PERIOD,
-  VOTING_DELAY,
-} from "../helper-hardhat-config"
+
+
+import * as helper_hh_conf from "../helper-hardhat-config"
 
 const deployGovernorContract: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  // @ts-ignore
+
   const { getNamedAccounts, deployments} = hre
   const { deploy, log, get } = deployments
   const { deployer } = await getNamedAccounts()
@@ -21,26 +17,22 @@ const deployGovernorContract: DeployFunction = async function (hre: HardhatRunti
   // log(governanceToken.address)
   // log(timeLock.address)
   
-  /*
-  GovernorContract.sol
-  constructor(
-    IVotes _token,
-    TimelockController _timelock,
-    uint256 _quorumPercentage,
-    uint256 _votingPeriod,
-    uint256 _votingDelay
-  )
-  */
+ 
   log("----------------------------------------------------")
   log("Deploying GovernorContract")
+   /*
+  GovernorContract.sol
+  constructor(IVotes _token,TimelockController _timelock,uint256 _quorumPercentage,
+    uint256 _votingPeriod,uint256 _votingDelay)
+  */
   const governorContract = await deploy("GovernorContract", {
     from: deployer,
     args: [
       governanceToken.address,
       timeLock.address,
-      QUORUM_PERCENTAGE,
-      VOTING_PERIOD,
-      VOTING_DELAY,
+      helper_hh_conf.QUORUM_PERCENTAGE,
+      helper_hh_conf.VOTING_PERIOD,
+      helper_hh_conf.VOTING_DELAY,
     ],
     log: true,
     // we need to wait if on a live network so we can verify properly

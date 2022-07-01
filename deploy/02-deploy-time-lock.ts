@@ -1,7 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types"
 import { DeployFunction } from "hardhat-deploy/types"
 // import verify from "../helper-functions"
-import {  MIN_DELAY } from "../helper-hardhat-config"
+import * as helper_hh_conf from "../helper-hardhat-config"
 
 const deployTimeLock: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   // @ts-ignore
@@ -14,7 +14,7 @@ const deployTimeLock: DeployFunction = async function (hre: HardhatRuntimeEnviro
   //constructor(uint256 minDelay,address[] memory proposers,address[] memory executors)==>args: [MIN_DELAY, [], []],
   const timeLock = await deploy("TimeLock", {
     from: deployer,
-    args: [MIN_DELAY, [], []],
+    args: [helper_hh_conf.MIN_DELAY, [], []],
     log: true,
     // we need to wait if on a live network so we can verify properly
     //waitConfirmations: networkConfig[network.name].blockConfirmations || 1,

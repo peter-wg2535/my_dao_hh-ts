@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol";
 import "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol";
 import "@openzeppelin/contracts/governance/extensions/GovernorTimelockControl.sol";
 import "@openzeppelin/contracts/governance/extensions/GovernorSettings.sol";
+//https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/governance
 
 contract GovernorContract is
   Governor,
